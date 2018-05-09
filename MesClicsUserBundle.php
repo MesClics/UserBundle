@@ -1,10 +1,10 @@
 <?php
 
-namespace MC\UserBundle;
+namespace MesClics\UserBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class MCUserBundle extends Bundle
+class MesClicsUserBundle extends Bundle
 {
     public function getParent(){
         return 'FOSUserBundle';

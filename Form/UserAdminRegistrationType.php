@@ -1,6 +1,6 @@
 <?php
 
-namespace MC\UserBundle\Form;
+namespace MesClics\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,9 +13,9 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use MC\EspaceClientBundle\Repository\ClientRepository;
-use MC\UserBundle\Entity\Thumbnail;
-use MC\UserBundle\Form\UserType;
+use MesClics\EspaceClientBundle\Repository\ClientRepository;
+use MesClics\UserBundle\Entity\Thumbnail;
+use MesClics\UserBundle\Form\UserType;
 
 class UserAdminRegistrationType extends AbstractType
 {
@@ -28,7 +28,7 @@ class UserAdminRegistrationType extends AbstractType
         ->add('client', EntityType::class, array(
             'label' => 'associer le nouvel utilisateur à un compte client',
             'required' => false,
-            'class' => 'MCEspaceClientBundle:Client',
+            'class' => 'MesClicsEspaceClientBundle:Client',
             'choice_label' => 'getNom',
             'multiple' => false,
             'query_builder' => function(ClientRepository $client_repo){
@@ -69,7 +69,7 @@ class UserAdminRegistrationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MC\UserBundle\Entity\User'
+            'data_class' => 'MesClics\UserBundle\Entity\User'
         ));
     }
 
@@ -78,7 +78,7 @@ class UserAdminRegistrationType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'mc_userbundle_user';
+        return 'mesclics_userbundle_user';
     }
 
     // public function getParent(){
@@ -86,7 +86,7 @@ class UserAdminRegistrationType extends AbstractType
     // }
 
     public function getName(){
-        return 'mc_user_admin_registration';
+        return 'mesclics_user_admin_registration';
     }
 
 

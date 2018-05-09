@@ -1,9 +1,9 @@
 <?php
-namespace MC\UserBundle\DataFixtures\ORM;
+namespace MesClics\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use MC\UserBundle\Entity\User;
+use MesClics\UserBundle\Entity\User;
  
 class LoadUser implements FixtureInterface
 {

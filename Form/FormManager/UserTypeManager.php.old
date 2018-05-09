@@ -1,8 +1,8 @@
 <?php
 
-namespace MC\UserBundle\Form\FormManager;
+namespace MesClics\UserBundle\Form\FormManager;
 
-use MC\AdminBundle\Entity\TypeManager;
+use MesClics\AdminBundle\Entity\TypeManager;
 
 class UserAdminRegistrationTypeManager extends TypeManager{
     public function handle($em, $passwordEncoder){

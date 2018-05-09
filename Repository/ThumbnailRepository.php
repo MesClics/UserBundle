@@ -1,6 +1,6 @@
 <?php
 
-namespace MC\UserBundle\Repository;
+namespace MesClics\UserBundle\Repository;
 
 /**
  * ThumbnailRepository

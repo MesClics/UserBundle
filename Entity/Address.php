@@ -1,6 +1,6 @@
 <?php
 
-namespace MC\UserBundle\Entity;
+namespace MesClics\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Address
  *
  * @ORM\Table(name="mesclics_address")
- * @ORM\Entity(repositoryClass="MC\UserBundle\Repository\AddressRepository")
+ * @ORM\Entity(repositoryClass="MesClics\UserBundle\Repository\AddressRepository")
  */
 class Address
 {

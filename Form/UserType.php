@@ -1,19 +1,19 @@
 <?php
 
-namespace MC\UserBundle\Form;
+namespace MesClics\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 //ENITIES & REPOSITORIES
-use MC\EspaceClientBundle\Repository\ClientRepository;
+use MesClics\EspaceClientBundle\Repository\ClientRepository;
 //FORMS
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use MC\MessagesBundle\Form\UserMessageType;
+use MesClics\MessagesBundle\Form\UserMessageType;
 
 class UserType extends AbstractType
 {
@@ -35,7 +35,7 @@ class UserType extends AbstractType
         ->add('client', EntityType::class, array(
             'label' => 'associer l\'utilisateur à un compte client',
             'required' => false,
-            'class' => 'MCEspaceClientBundle:Client',
+            'class' => 'MesClicsEspaceClientBundle:Client',
             'choice_label' => 'getNom',
             'multiple' => false,
             'query_builder' => function(ClientRepository $client_repo){
@@ -58,7 +58,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MC\UserBundle\Entity\User'
+            'data_class' => 'MesClics\UserBundle\Entity\User'
         ));
     }
 
@@ -67,7 +67,7 @@ class UserType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'mc_userbundle_user';
+        return 'mesclics_userbundle_user';
     }
 
 

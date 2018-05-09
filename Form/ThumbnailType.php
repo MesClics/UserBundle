@@ -1,6 +1,6 @@
 <?php
 
-namespace MC\UserBundle\Form;
+namespace MesClics\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,7 +23,7 @@ class ThumbnailType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MC\UserBundle\Entity\Thumbnail'
+            'data_class' => 'MesClics\UserBundle\Entity\Thumbnail'
         ));
     }
 
@@ -32,7 +32,7 @@ class ThumbnailType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'mc_userbundle_thumbnail';
+        return 'mesclics_userbundle_thumbnail';
     }
 
 

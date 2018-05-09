@@ -1,12 +1,12 @@
 <?php
-namespace MC\UserBundle\Entity;
+namespace MesClics\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Table(name="mesclics_user")
- * @ORM\Entity(repositoryClass="MC\UserBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="MesClics\UserBundle\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class User extends BaseUser{
@@ -23,7 +23,7 @@ class User extends BaseUser{
     protected $thumbnail;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\MC\EspaceClientBundle\Entity\Client", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="\MesClics\EspaceClientBundle\Entity\Client", cascade={"persist"})
      */
     protected $client;
 
@@ -46,11 +46,11 @@ class User extends BaseUser{
     /**
      * Set thumbnail
      *
-     * @param \MC\UserBundle\Entity\Thumbnail $thumbnail
+     * @param \MesClics\UserBundle\Entity\Thumbnail $thumbnail
      *
      * @return User
      */
-    public function setThumbnail(\MC\UserBundle\Entity\Thumbnail $thumbnail = null)
+    public function setThumbnail(\MesClics\UserBundle\Entity\Thumbnail $thumbnail = null)
     {
         $this->thumbnail = $thumbnail;
         return $this;
@@ -59,7 +59,7 @@ class User extends BaseUser{
     /**
      * Get thumbnail
      *
-     * @return \MC\UserBundle\Entity\Thumbnail
+     * @return \MesClics\UserBundle\Entity\Thumbnail
      */
     public function getThumbnail()
     {
@@ -69,11 +69,11 @@ class User extends BaseUser{
     /**
      * Set client
      *
-     * @param \MC\EspaceClientBundle\Entity\Client $client
+     * @param \MesClics\EspaceClientBundle\Entity\Client $client
      *
      * @return User
      */
-    public function setClient(\MC\EspaceClientBundle\Entity\Client $client = null)
+    public function setClient(\MesClics\EspaceClientBundle\Entity\Client $client = null)
     {
         $this->client = $client;
 
@@ -83,7 +83,7 @@ class User extends BaseUser{
     /**
      * Get client
      *
-     * @return \MC\EspaceClientBundle\Entity\Client
+     * @return \MesClics\EspaceClientBundle\Entity\Client
      */
     public function getClient()
     {

@@ -1,14 +1,14 @@
 <?php
-namespace MC\UserBundle\Controller;
+namespace MesClics\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use MC\UserBundle\Entity\User;
-use MC\UserBundle\Form\UserAdminRegistrationType;
-use MC\UserBundle\Form\UserType;
-use MC\MessagesBundle\Entity\Message;
-use MC\MessagesBundle\Form\UserMessageType;
+use MesClics\UserBundle\Entity\User;
+use MesClics\UserBundle\Form\UserAdminRegistrationType;
+use MesClics\UserBundle\Form\UserType;
+use MesClics\MessagesBundle\Entity\Message;
+use MesClics\MessagesBundle\Form\UserMessageType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -23,7 +23,7 @@ class UsersController extends Controller{
     public function usersAction(Request $request){
         //on récupère la liste des utilisateurs
         $em = $this->getDoctrine()->getManager();
-        $usersRepo = $em->getRepository('MCUserBundle:User');
+        $usersRepo = $em->getRepository('MesClicsUserBundle:User');
 
         //on crée un formulaire d'ajout d'utilisateur
         $user = new User();
@@ -48,7 +48,7 @@ class UsersController extends Controller{
             'addUserForm' => $userForm->createView()
         );
 
-        return $this->render('MCAdminBundle:Panel:users.html.twig', $args);
+        return $this->render('MesClicsAdminBundle:Panel:users.html.twig', $args);
      }
 
     //UTILISATEUR - Fiche individuelle
@@ -58,7 +58,7 @@ class UsersController extends Controller{
      public function userAction($id, Request $request){
          //on récupère l'utilisateur
          $em = $this->getDoctrine()->getManager();
-         $userRepo = $em->getRepository('MCUserBundle:User');
+         $userRepo = $em->getRepository('MesClicsUserBundle:User');
          $user = $userRepo->find($id);
         
         //on ajoute un formulaire pour changer les paramètres de l'utilisateur
@@ -84,16 +84,16 @@ class UsersController extends Controller{
         $message->setAuthor($this->get('security.token_storage')->getToken()->getUser());
         $messageForm =  $this->createForm(UserMessageType::class, $message);
         if($request->isMethod('POST')){
-            $messageFormManager = $this->get('mc_messages.form_manager.user');
+            $messageFormManager = $this->get('mesclics_messages.form_manager.user');
             // $messageFormManager = new UserMessageTypeManager($request, $messageForm);
             if($messageFormManager->handle($messageForm)->hasSucceeded()){
             $args = array('id' => $id);
-            return $this->redirectToRoute('mc_admin_user', $args);
+            return $this->redirectToRoute('mesclics_admin_user', $args);
             }
         }
 
         //on récupère les messages non lus du client
-        $unreadMessages = $em->getRepository('MCMessagesBundle:Message')->getUnreadMessages($user);
+        $unreadMessages = $em->getRepository('MesClicsMessagesBundle:Message')->getUnreadMessages($user);
 
         $args = array(
             'currentSection' => 'utilisateurs',
@@ -102,6 +102,6 @@ class UsersController extends Controller{
             'userMessageForm' => $messageForm->createView(),
             'unreadMessages' => $unreadMessages
         );
-        return $this->render('MCAdminBundle:Panel:user.html.twig', $args);
+        return $this->render('MesClicsAdminBundle:Panel:user.html.twig', $args);
      }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace MC\UserBundle\Repository;
+namespace MesClics\UserBundle\Repository;
 
-use MC\EspaceClientBundle\Entity\Client;
+use MesClics\EspaceClientBundle\Entity\Client;
 
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {

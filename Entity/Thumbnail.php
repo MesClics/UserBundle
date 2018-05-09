@@ -1,6 +1,6 @@
 <?php
 
-namespace MC\UserBundle\Entity;
+namespace MesClics\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * Thumbnail
  *
  * @ORM\Table(name="mesclics_thumbnail")
- * @ORM\Entity(repositoryClass="MC\UserBundle\Repository\ThumbnailRepository")
+ * @ORM\Entity(repositoryClass="MesClics\UserBundle\Repository\ThumbnailRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Thumbnail

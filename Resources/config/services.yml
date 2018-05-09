@@ -1,4 +1,4 @@
 services:
-#    mc_user.example:
-#        class: MC\UserBundle\Example
+#    mesclics_user.example:
+#        class: MesClics\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
