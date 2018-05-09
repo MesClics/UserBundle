@@ -1,0 +1,25 @@
+{# squelette #}
+{# 
+    @html
+       @ header
+            @{% styles %}
+       @ body
+            @{% body %}
+            @#flash-messages
+                 {% flashMessages %}
+#}
+{#
+    {% body %}
+         
+#}
+{% extends "::layout.html.twig" %}
+{% block body %}
+    {% block flashMessages %}
+        {% for label, messages in app.flashes() %}
+            {% for message in messages %}
+                <div class="{{ label }}">{{ message|trans({}, 'FOSUserBundle') }}</div>
+            {% endfor %}
+        {% endfor %}
+    {% endblock flashMessages %}
+    {% block fos_user_content %}{% endblock fos_user_content %}
+{% endblock body %}

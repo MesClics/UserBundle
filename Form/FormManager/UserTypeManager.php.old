@@ -1,0 +1,29 @@
+<?php
+
+namespace MC\UserBundle\Form\FormManager;
+
+use MC\AdminBundle\Entity\TypeManager;
+
+class UserAdminRegistrationTypeManager extends TypeManager{
+    public function handle($em, $passwordEncoder){
+        //on vérifie la validité des données saisies
+        if($this->getForm()->isValid()){
+            $this->setAction($this->getForm()->getClickedButton()->getName());
+            $object = $this->getForm()->getData();
+            $object->addRole('ROLE_USER');
+            $password = $passwordEncoder->encodePassword($object, $object->getPlainPassword());
+            $object->setPassword($password);
+            //on persiste notre objet en bdd
+            $em->persist($object);
+            //on envoie un message flash
+            $this->setHasSucceeded($em->flush());
+            //on envoie un mail de confirmation
+            $this->sendConfirmEmail($object);
+        }
+        return $this;
+    }
+
+    public function sendConfirmEmail($user){
+        //TODO:rédiger la fonction
+    }
+}

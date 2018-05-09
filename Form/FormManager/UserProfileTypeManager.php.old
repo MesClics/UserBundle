@@ -1,0 +1,9 @@
+<?php
+
+namespace MC\UserBundle\Form\FormManager;
+
+use MC\AdminBundle\Entity\TypeManager;
+
+class UserProfileTypeManager extends TypeManager{
+   
+}
