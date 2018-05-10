@@ -1,0 +1,7 @@
+mesclics_admin_users:
+    path: /
+    defaults: { _controller: MesClicsUserBundle:Users:users }
+
+mesclics_admin_user:
+    path: /utilisateur-{id}/
+    defaults: { _controller: MesClicsUserBundle:Users:user }
