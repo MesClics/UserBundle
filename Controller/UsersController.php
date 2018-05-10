@@ -85,7 +85,6 @@ class UsersController extends Controller{
         $messageForm =  $this->createForm(UserMessageType::class, $message);
         if($request->isMethod('POST')){
             $messageFormManager = $this->get('mesclics_messages.form_manager.user');
-            // $messageFormManager = new UserMessageTypeManager($request, $messageForm);
             if($messageFormManager->handle($messageForm)->hasSucceeded()){
             $args = array('id' => $id);
             return $this->redirectToRoute('mesclics_admin_user', $args);
