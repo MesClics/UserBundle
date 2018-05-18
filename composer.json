@@ -1,74 +1,19 @@
 {
     "name": "mesclics/user-bundle",
-    "description": "Ajout de la fonctionnalité utilisateurs dans une console d'administration MesClics",
+    "description": "Bundle pour l'ajout d'un espace utilisateur à la console d'administration mesclics",
     "license": "proprietary",
-    "type": "project",
-    "autoload": {
-        "psr-4": {},
-        "classmap": [
-            "app/AppKernel.php",
-            "app/AppCache.php"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        },
-        "files": [
-            "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
-        ]
-    },
-    "require": {
-        "mesclics/admin-bundle": "*"
-    },
-    "repositories": [
+    "type": "symfony-bundle",
+    "version": "0.0.1",
+    "homepage": "https://github.com/MesClics/UserBundle.git",
+    "authors": [
         {
-            "type": "package",
-            "package": {
-                "name": "mesclics/admin-bundle",
-                "version": "master",
-                "source": {
-                    "url": "https://github.com/MesClics/AdminBundle.git",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
+            "name": "mesclics.fr",
+            "email": "contact@mesclics.fr",
+            "homepage": "http://www.mesclics.fr",
+            "role": "Developer"
         }
     ],
-    "require-dev": {
-        "sensio/generator-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^3.0"
-    },
-    "scripts": {
-        "symfony-scripts": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "FOS\\CKEditorBundle\\Composer\\CKEditorScriptHandler::install",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-        ],
-        "post-install-cmd": [
-            "@symfony-scripts"
-        ],
-        "post-update-cmd": [
-            "@symfony-scripts"
-        ]
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "symfony-app-dir": "app",
-        "symfony-bin-dir": "bin",
-        "symfony-var-dir": "var",
-        "symfony-web-dir": "web",
-        "symfony-tests-dir": "tests",
-        "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        },
-        "branch-alias": null
+    "require": {
+        "mesclics/admin-bundle": "0.*"
     }
 }
