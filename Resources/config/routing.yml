@@ -1,7 +1,7 @@
 mesclics_admin_users:
     path: /
-    defaults: { _controller: MesClicsUserBundle:Users:users }
+    defaults: { _controller: MesClicsUserBundle:Users:getUsers }
 
 mesclics_admin_user:
-    path: /utilisateur-{id}/
-    defaults: { _controller: MesClicsUserBundle:Users:user }
+    path: /{id}/
+    defaults: { _controller: MesClicsUserBundle:Users:getUser }

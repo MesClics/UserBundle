@@ -20,7 +20,7 @@ class UsersController extends Controller{
     /**
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function usersAction(Request $request){
+    public function getUsersAction(Request $request){
         //on récupère la liste des utilisateurs
         $em = $this->getDoctrine()->getManager();
         $usersRepo = $em->getRepository('MesClicsUserBundle:User');
@@ -55,7 +55,7 @@ class UsersController extends Controller{
     /**
      * @Security("has_role('ROLE_ADMIN')")
      */
-     public function userAction($id, Request $request){
+     public function getUserAction($id, Request $request){
          //on récupère l'utilisateur
          $em = $this->getDoctrine()->getManager();
          $userRepo = $em->getRepository('MesClicsUserBundle:User');
