@@ -4,7 +4,7 @@ namespace MesClics\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use MesClics\UserBundle\Entity\User;
+use MesClicsBundle\Entity\MCUser as User;
 use MesClics\UserBundle\Form\UserAdminRegistrationType;
 use MesClics\UserBundle\Form\UserType;
 use MesClics\MessagesBundle\Entity\Message;
@@ -23,29 +23,29 @@ class UsersController extends Controller{
     public function getUsersAction(Request $request){
         //on récupère la liste des utilisateurs
         $em = $this->getDoctrine()->getManager();
-        $usersRepo = $em->getRepository('MesClicsUserBundle:User');
+        $usersRepo = $em->getRepository('MesClicsBundle:MCUser');
 
-        //on crée un formulaire d'ajout d'utilisateur
-        $user = new User();
-        $userForm = $this->createForm(UserAdminRegistrationType::class, $user);
-        $userForm->handleRequest($request);
+        //TODO:DEBUG: on crée un formulaire d'ajout d'utilisateur
+        // $user = new User();
+        // $userForm = $this->createForm(UserAdminRegistrationType::class, $user);
+        // $userForm->handleRequest($request);
 
-        if($userForm->isValid()){
-            $userManager = $this->get('fos_user.user_manager');
-            $exists = $userManager->findUserBy(array('email' => $user->getEmail()));
+        // if($userForm->isValid()){
+        //     $userManager = $this->get('fos_user.user_manager');
+        //     $exists = $userManager->findUserBy(array('email' => $user->getEmail()));
 
-            if ($exists instanceof User){
-                throw new HttpException(409, 'Email déjà enregistré');
-            }
-            $userManager->updateUser($user);
-        }
+        //     if ($exists instanceof User){
+        //         throw new HttpException(409, 'Email déjà enregistré');
+        //     }
+        //     $userManager->updateUser($user);
+        // }
 
         $users = $usersRepo->getUsersList('username');
 
         $args = array(
             'currentSection'  => 'utilisateurs',
             'users' => $users,
-            'addUserForm' => $userForm->createView()
+            // 'addUserForm' => $userForm->createView()
         );
 
         return $this->render('MesClicsAdminBundle:Panel:users.html.twig', $args);

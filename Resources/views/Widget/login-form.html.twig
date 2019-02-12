@@ -1,0 +1,28 @@
+{{ form_start(form, 
+    {
+        'attr': {
+            'class': 'oocss-form oocss-full-container-width'
+        }
+    }) 
+}}
+    <div class="oocss-form-row">
+        {{ form_row(form._username, {'attr': {'required': true, 'class': 'oocss-form-input oocss-form-text oocss-full-container-width'}, 'label': 'nom d\'utilisateur'}) }}
+        {# <label for="username">Nom d'utilisateur</label>
+        <input class="oocss-form-input oocss-form-text oocsss-full_container-width" type="text" name="_username" id="username" required="required"> #}
+    </div>
+    <div class="oocsss-form-row">
+        {{ form_row(form._password, 
+            {
+                'attr': {
+                    'required': true,
+                    'class': 'oocss-form-input oocss-form-text oocss-full-container-width'
+                },
+                'label': 'mot de passe'            
+            }) 
+        }}
+    </div>
+    <div class="formfieldset oocss-full-container-width oocss-form-validate">
+        <!--TODO: ajouter form row se souvenir de moi -->
+        <button class="oocss-form-submit">Se connecter</button>
+    </div>
+{{ form_end(form) }}

@@ -1,0 +1,12 @@
+mesclics_security_login:
+    path: login/
+    defaults: { _controller: MesClicsUserBundle:Security:login }
+
+mesclics_security_register:
+    path: register/
+    defaults: { _controller: MesClicsUserBundle:Security:register }
+
+
+mesclics_security_logout:
+    path: logout/
+    defaults: { _controller: MesClicsUserBundle:Security:logout }

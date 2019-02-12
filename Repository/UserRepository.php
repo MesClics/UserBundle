@@ -2,36 +2,17 @@
 
 namespace MesClics\UserBundle\Repository;
 
-use MesClics\EspaceClientBundle\Entity\Client;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
-class UserRepository extends \Doctrine\ORM\EntityRepository
-{
-    public function getUsersList($orderBy){
+class UserRepository extends EntityRepository implements UserLoaderInterface{
+    public function loadUserByUsername($username){
         $qb = $this
-        ->createQueryBuilder('user')
-        ->orderBy('user.username');
+        ->createQueryBuilder('u')
+        ->where('u.username = :username OR u.email = :email')
+        ->setParameter('username', $username)
+        ->setParameter('email', $username);
 
-        return $qb->getQuery()->getResult();
-    }
-
-    public function getUsersListOrderedByClientsQB(){
-        $qb = $this
-        ->createQueryBuilder('user')
-        ->leftJoin('user.client', 'client')
-        ->orderBy('client.nom')
-        ->addSelect('client');
-
-        return $qb;
-    }
-
-    public function getUsersListOfClientQB(Client $client){
-        $qb = $this
-        ->createQueryBuilder('user')
-        ->leftJoin('user.client', 'client')
-        ->andWhere('client', ':client')
-            ->setParameter(':client', $client)
-        ->orderBy('user.username');
-
-        return $qb;
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }

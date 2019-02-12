@@ -1,0 +1,56 @@
+
+<div class="oocss-form oocss-full-container-width">
+    {{ form_start(form) }}
+        <div class="oocs-form-row oocss-full-container-width">
+            {{ form_row(form._username, 
+                {
+                    'label': 'Nom d\'utilisateur',
+                    'attr': {
+                        'class': 'oocss-form-input oocss-form-text oocss-full-container-width'
+                    },
+                    'required': true
+                })
+            }}
+        </div>
+        <div class="oocss-form-row oocss-full-container-width">
+            {{ form_row(form._email, 
+                {
+                    'label': 'Adresse email',
+                    'attr': {
+                        'class': 'oocss-form-input oocss-form-text oocss-full-container-width'
+                    },
+                    'required': true
+                })
+            }}
+        </div>
+        <div class="form-fieldset oocss-full-container-width">
+            <div class="oocss-form-row oocss-full-container-width">
+                {{ form_row(form._password._password1, 
+                    {
+                        'label': 'Mot de passe',
+                        'attr': {
+                            'class': 'oocss-form-input oocss-form-text oocss-full-container-width'
+                        },
+                        'required': true
+                    }) 
+                }}
+            </div>
+            <div class="oocss-form-row oocss-full-container-width">
+                {{ form_row(form._password._password2, 
+                    {
+                        'label': 'Répéter le mot de passe',
+                        'attr': {
+                            'class': 'oocss-form-input oocss-form-text oocss-full-container-width'
+                        },
+                        'required': true
+                    }) 
+                }}
+            </div>
+        </div>
+
+        <div class="formfieldset oocss-full-container-width oocss-form-validate">
+            <!--TODO: ajouter une cas à cocher, j'accepte les Conditions d'utilisation -->
+            <button class="oocss-form-submit">S'inscrire</button>
+        </div>
+    {{ form_end(form) }}
+</div>
