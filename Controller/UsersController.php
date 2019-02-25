@@ -4,7 +4,7 @@ namespace MesClics\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use MesClicsBundle\Entity\MCUser as User;
+use MesClicsBundle\Entity\MesClicsUser as User;
 use MesClics\UserBundle\Form\UserAdminRegistrationType;
 use MesClics\UserBundle\Form\UserType;
 use MesClics\MessagesBundle\Entity\Message;
@@ -23,7 +23,7 @@ class UsersController extends Controller{
     public function getUsersAction(Request $request){
         //on récupère la liste des utilisateurs
         $em = $this->getDoctrine()->getManager();
-        $usersRepo = $em->getRepository('MesClicsBundle:MCUser');
+        $usersRepo = $em->getRepository('MesClicsBundle:MesClicsUser');
 
         //TODO:DEBUG: on crée un formulaire d'ajout d'utilisateur
         // $user = new User();

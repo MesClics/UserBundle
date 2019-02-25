@@ -2,7 +2,7 @@
 namespace MesClics\UserBundle\Controller;
 
 
-use MesClicsBundle\Entity\MCUser;
+use MesClicsBundle\Entity\MesClicsUser;
 use MesClics\UserBundle\Form\LoginType;
 use Doctrine\ORM\EntityManagerInterface;
 use MesClics\UserBundle\Form\RegisterType;
@@ -35,7 +35,7 @@ class SecurityController extends Controller{
     }
 
     public function registerAction(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder){
-        $user = new MCUser('temp_user');
+        $user = new MesClicsUser('temp_user');
         //by default the user has ROLE_USER
         $user->addRole("ROLE_USER");
         

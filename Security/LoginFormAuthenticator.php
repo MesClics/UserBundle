@@ -68,7 +68,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator{
         $username = $credentials['username'];
 
         //so users can log with their username or their email, we call our custom repository method (loadUserFromUsernameOrEmail)
-        $user_entity = 'MesClicsBundle\Entity\MCUser';
+        $user_entity = 'MesClicsBundle\Entity\MesClicsUser';
         $users_repo = $this->em->getRepository($user_entity);
         $user = $users_repo->loadUserByUsernameOrEmail($username);
 

@@ -3,7 +3,7 @@ namespace MesClics\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use MesClicsBundle\Entity\MCUser as User;
+use MesClicsBundle\Entity\MesClicsUser as User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends Fixture{
