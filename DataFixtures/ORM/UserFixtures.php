@@ -23,7 +23,8 @@ class UserFixtures extends Fixture{
         ->setUsername('admin')
         ->addRole('ROLE_ADMIN')
         ->setPassword($encoded_password)
-        ->setEmail("admin@mail.fr");
+        ->setEmail("admin@mail.fr")
+        ->setNewsletter(false);
         
         $manager->persist($userAdmin);
         $manager->flush();

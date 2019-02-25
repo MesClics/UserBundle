@@ -21,6 +21,22 @@
             }) 
         }}
     </div>
+    <div class="oocsss-form-row">
+       {# {{ form_row(form._remember_me, {
+            'attr': {
+                'class': 'oocss-form-input oocss-form-checkbox__d__button'
+            },
+            'label': 'se souvenir de moi'
+        })}} #}
+        <input type="checkbox" class="oocss-form-checkbox" name="_remember_me">
+    </div>
+
+    {# csrf token
+    <div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    </div>
+    #}
+
     <div class="formfieldset oocss-full-container-width oocss-form-validate">
         <!--TODO: ajouter form row se souvenir de moi -->
         <button class="oocss-form-submit">Se connecter</button>

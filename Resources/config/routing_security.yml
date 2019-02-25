@@ -6,7 +6,6 @@ mesclics_security_register:
     path: register/
     defaults: { _controller: MesClicsUserBundle:Security:register }
 
-
 mesclics_security_logout:
     path: logout/
     defaults: { _controller: MesClicsUserBundle:Security:logout }
