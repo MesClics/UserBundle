@@ -10,6 +10,7 @@ use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -18,6 +19,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator{
+    use TargetPathTrait;
 
     private $form_factory;
     private $em;
@@ -92,7 +94,11 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator{
 
     //in case visitor did not came to the login page from another page, redirect to homepage
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey){
-       $response = new RedirectResponse($this->router->generate('mesclics_index'));
-       return $response;
+        //redirect to the original page if it was not directly the login page
+        if($targetPath = $this->getTargetPAth($request->getSession(), $providerKey)){
+            return new RedirectResponse($targetPath);
+        }
+        //else redirect to home page
+        return new RedirectResponse($this->router->generate('mesclics_index'));
     }
 }
