@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 use MesClics\UserBundle\Entity\User;
 
 /**
- * @ORM\Entity(repositoryClass="MesClicsBundle\Repository\MyUserRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\MyUserRepository")
  * @ORM\Table(name="mesclics_user2")
  */
 class MyUser extends User{
