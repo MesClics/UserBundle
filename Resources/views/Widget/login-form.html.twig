@@ -7,8 +7,6 @@
 }}
     <div class="oocss-form-row">
         {{ form_row(form._username, {'attr': {'required': true, 'class': 'oocss-form-input oocss-form-text oocss-full-container-width'}, 'label': 'nom d\'utilisateur'}) }}
-        {# <label for="username">Nom d'utilisateur</label>
-        <input class="oocss-form-input oocss-form-text oocsss-full_container-width" type="text" name="_username" id="username" required="required"> #}
     </div>
     <div class="oocsss-form-row">
         {{ form_row(form._password, 
@@ -21,21 +19,10 @@
             }) 
         }}
     </div>
-    <div class="oocsss-form-row">
-       {# {{ form_row(form._remember_me, {
-            'attr': {
-                'class': 'oocss-form-input oocss-form-checkbox__d__button'
-            },
-            'label': 'se souvenir de moi'
-        })}} #}
-        <input type="checkbox" class="oocss-form-checkbox" name="_remember_me">
+    <div class="oocsss-form-row oocss-full-container-width">
+        <label for="_remember_me">Se souvenir de moi</label>
+        <input type="checkbox" class="oocss-form-checkbox" id="_remember_me" name="_remember_me">
     </div>
-
-    {# csrf token
-    <div>
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-    </div>
-    #}
 
     <div class="formfieldset oocss-full-container-width oocss-form-validate">
         <!--TODO: ajouter form row se souvenir de moi -->

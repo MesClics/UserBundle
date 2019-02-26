@@ -27,6 +27,17 @@ class UserFixtures extends Fixture{
         ->setNewsletter(false);
         
         $manager->persist($userAdmin);
+
+        $userUser = new User('user');
+        $encoded_password = $this->encoder->encodePassword($userUser, 'userpass');
+        $userUser
+        ->setUsername('user')
+        ->setPassword($encoded_password)
+        ->setEmail('user@mail.fr')
+        ->setNewsletter(true);
+
+        $manager->persist($userUser);
+
         $manager->flush();
 
         $this->addReference(self::ADMIN_USER_REFERENCE, $userAdmin);

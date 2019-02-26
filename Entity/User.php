@@ -28,7 +28,7 @@ abstract class User implements UserInterface, \Serializable{
     protected $email;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="json", nullable=true)
      */
     protected $roles;
 
@@ -85,18 +85,25 @@ abstract class User implements UserInterface, \Serializable{
     }
 
     public function getRoles(){
-        return json_decode($this->roles);
+        $roles = json_decode($this->roles);
+        if(empty($roles)){
+            $roles[] = 'ROLE_USER';
+        }
+        return $roles;
     }
 
     public function addRole(string $role){
-        $roles = json_decode($this->getRoles());
+        $roles = json_decode($this->roles);
         $roles[] = $role;
         $this->roles = json_encode($roles);
         return $this;
     }
 
     public function removeRole(string $role){
-        $this->roles[$role] = null;
+        $roles = json_decode($this->roles);
+        $roles[$role] = null;
+        $this->roles = json_encode($roles);
+        return$this;
     }
     
     public function getPassword(){
