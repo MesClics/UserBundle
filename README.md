@@ -8,6 +8,8 @@ Provides a User class, and some layouts (e.g. login-form) for faster User implem
 Use this class for your Users management
 
 1.- create your own User class that extends MesClics\UserBundle\Entity\User and add a Repository reference to your class (if users are loaded from database).
+
+2.- use the right authenticator (LoginFormAuthenticator, ApiAuthenticator...)
 ```php
 <?php
 
@@ -55,7 +57,7 @@ class MyUserRepository extends EntityRepository implements UserLoaderInterface{
     mesclics_security:
         resource: "@MesClicsUserBundle/Resources/config/routing_security.yml"
 ```
-4.- modify security.yml to make this new User class to be used by the users provider. You must use `mesclics_security_login` route for the form_login's login_path and check_path or your own redefined route
+4.- modify security.yml to make this new User class to be used by the users provider. 
 
 ```yaml
     security:
@@ -72,20 +74,5 @@ class MyUserRepository extends EntityRepository implements UserLoaderInterface{
             entity:
                 class: App\Entity\MyUser
                 property: username
-
-    firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
-        main:
-            anonymous: ~
-            form_login:
-                login_path: mesclics_security_login
-                check_path: mesclics_security_login
-                username_parameter: login[_username]
-                password_parameter: login[_password]
-                provider: my_users
-            logout_on_user_change: true
 ```
 
