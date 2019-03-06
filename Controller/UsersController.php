@@ -102,5 +102,5 @@ class UsersController extends Controller{
             'unreadMessages' => $unreadMessages
         );
         return $this->render('MesClicsAdminBundle:Panel:user.html.twig', $args);
-     }
+    }
 }
