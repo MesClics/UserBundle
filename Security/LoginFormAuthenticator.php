@@ -95,7 +95,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator{
     //in case visitor did not came to the login page from another page, redirect to homepage
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey){
         //redirect to the original page if it was not directly the login page
-        if($targetPath = $this->getTargetPAth($request->getSession(), $providerKey)){
+        if($targetPath = $this->getTargetPath($request->getSession(), $providerKey)){
             return new RedirectResponse($targetPath);
         }
         //else redirect to home page
