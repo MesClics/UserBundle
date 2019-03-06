@@ -1,0 +1,20 @@
+{% extends "MesClicsBundle:Popups:layout.html.twig" %}
+{% block popupHeader %}
+    <h2>S'identifier</h2>
+{% endblock popupHeader %}
+
+{% block popupContent %}
+        {% if options.error %}
+            <div class="oocss-form-error">
+                {{ error.messageKey }}
+            </div>
+        {% endif %}
+
+        {% include "MesClicsUserBundle:Widget:login-form.html.twig" with { 'form': options.form } %}
+{% endblock popupContent %}
+
+{% block popupFooter %}
+        <a class="oocss-button oocss-discret" href="{{ path("mesclics_security_register") }}">s'inscrire</a>
+        {# <a href="{{ path("mesclics_password_lost") }}">mot de passe perdu</a> #}
+        TODO: mot de passe perdu
+{% endblock popupFooter %}

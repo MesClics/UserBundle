@@ -1,0 +1,14 @@
+{% extends "MesClicsBundle:Popups:layout.html.twig" %}
+{% block popupHeader %}
+        <h2>S'inscrire</h2>
+{% endblock popupHeader %}
+
+{% block popupContent %}
+        {% include "MesClicsUserBundle:Widget:register-form.html.twig" with {'form': options.form} %}
+{% endblock popupContent %}
+
+{% block popupFooter %}
+    TODO: <a href="" title="voir les conditions d'utilisation">conditions d'utilisation</a>
+    {# <a href="{{ path("mesclics_password_lost") }}">mot de passe perdu</a> #}
+{% endblock popupFooter %}
+
