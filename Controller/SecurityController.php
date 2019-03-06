@@ -15,8 +15,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class SecurityController extends Controller{
 
     public function loginAction(AuthenticationUtils $authenticationUtils, EntityManagerInterface $em){
-
-      
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
@@ -26,18 +24,24 @@ class SecurityController extends Controller{
         $form = $this->createForm(LoginType::class, ([
             '_username' => $lastUsername
         ]));
-        // $form->handleRequest($request);
-        return $this->render('MesClicsUserBundle:Security:login.html.twig', [
-            'error'         => $error,
-            'form'          => $form->createView()
-        ]);
+
+        return $this->render('MesClicsBundle:Pages:index.html.twig', array(
+            'popups' => array(
+                'login' => array(
+                    'template' => 'MesClicsUserBundle:Security:login.html.twig',
+                    'options' => array(
+                        'remember_me' => true,
+                        'error' => $error,
+                        'form' => $form->createView()
+                    )
+                )
+            )
+        ));
 
     }
 
     public function registerAction(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder){
         $user = new MesClicsUser('temp_user');
-        //by default the user has ROLE_USER
-        $user->addRole("ROLE_USER");
         
         $form = $this->createForm(RegisterType::class, $user);
 
@@ -50,10 +54,23 @@ class SecurityController extends Controller{
         }
 
         $args = array(
-            'form' => $form->createView()
+            'popups' => array(
+                'register' => array(
+                    'template' => 'MesClicsUserBundle:Security:register.html.twig',
+                    'options' => array(
+                        'form' => $form->createView()
+                    )
+                )
+            )
         );
 
-        return $this->render('MesClicsUserBundle:Security:register.html.twig', $args);
+        // TODO: get the page the visitor come from and redirect to it
+        // $route = $request->attributes->get('_route');
+        // if($route){
+        //     return $this->redirectToRoute($route, $args);
+        // }
+
+        return $this->render('MesClicsBundle:Pages:index.html.twig', $args);
     }
     
     public function logoutAction(){
