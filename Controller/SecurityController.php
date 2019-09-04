@@ -77,4 +77,6 @@ class SecurityController extends Controller{
         // TODO: write the logout logic
         return $this->redirectToRoute('mesclics_index');
     }
+
+    //TODO: retrievePasswordAction
 }
