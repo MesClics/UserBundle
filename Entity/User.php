@@ -4,10 +4,12 @@ namespace MesClics\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use MesClics\UserBundle\Entity\Thumbnail;
+use MesClics\NavigationBundle\Entity\Chronology;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\MappedSuperclass
+ * @ORM\HasLifecycleCallbacks()
  */
 abstract class User implements UserInterface, \Serializable{
     /**
@@ -57,6 +59,11 @@ abstract class User implements UserInterface, \Serializable{
      * TODO: add EventListener on login
      */
     protected $lastVisit;
+
+    /**
+     * @ORM\OneToOne(targetEntity="MesClics\NavigationBundle\Entity\Chronology", cascade={"persist"})
+     */
+    protected $chronology;
 
     public function __construct(){
         $this->isActive = true;
@@ -172,6 +179,16 @@ abstract class User implements UserInterface, \Serializable{
     public function getLastVisit()
     {
         return $this->lastVisit;
+    }
+
+    public function setChronology(Chronology $chronology){
+        $this->chronology = $chronology;
+
+        return $this;
+    }
+
+    public function getChronology(){
+        return $this->chronology;
     }
 
     /**
