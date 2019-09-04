@@ -63,13 +63,6 @@ class SecurityController extends Controller{
                 )
             )
         );
-
-        // TODO: get the page the visitor come from and redirect to it
-        // $route = $request->attributes->get('_route');
-        // if($route){
-        //     return $this->redirectToRoute($route, $args);
-        // }
-
         return $this->render('MesClicsBundle:Pages:index.html.twig', $args);
     }
     
